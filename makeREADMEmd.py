@@ -10,3 +10,4 @@ for item in os.listdir(path):
 
         fptr.write("# " + item + "-Solutions\n")
         fptr.write("The solutions of {} are available in this repository.\n".format(item))
+        fptr.close()
