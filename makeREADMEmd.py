@@ -9,4 +9,4 @@ for item in os.listdir(path):
         fptr = open(os.path.join(cur, fileName), "w")
 
         fptr.write("# " + item + "-Solutions\n")
-        fptr.write("The solutions of {} are available in this repositry.\n".format(item))
+        fptr.write("The solutions of {} are available in this repository.\n".format(item))
