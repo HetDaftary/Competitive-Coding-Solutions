@@ -1,71 +1,68 @@
-if (num == 0):
-        return "0"
+#User function Template for python3
+
+toRound = 10
+
+class Solution:
+	def fractionToDecimal(self, num, den):
+		if (num == 0):
+            return "0"
  
-    # If any one (out of numerator and denominator)
-    # is -ve, sign of resultant answer -ve.
-    sign = -1 if (num < 0) ^ (den < 0) else 1
+        sign = -1 if (num < 0) ^ (den < 0) else 1
  
-    num = abs(num)
-    den = abs(den)
+        num = abs(num)
+        den = abs(den)
  
-    # Calculate the absolute part
-    # (before decimal point).
-    initial = num // den
+        initial = num // den
  
-    # Output string to store the answer
-    res = ""
+        res = ""
  
-    # Append sign
-    if (sign == -1):
-        res += "-"
+        if (sign == -1):
+            res += "-"
  
-    # Append the initial part
-    res += str(initial)
+        res += str(initial)
  
-    # If completely divisible, return answer.
-    if (num % den == 0):
+        if (num % den == 0):
+            return res
+ 
+        res += "."
+ 
+        rem = num % den
+        mp = {}
+ 
+        index = 0
+        repeating = False
+        while (rem > 0 and not repeating) :
+            if ( rem in mp):
+                index = mp[rem]
+                repeating = True
+                break
+            else:
+                mp[rem] = len(res)
+ 
+            rem = rem * 10
+ 
+            temp = rem // den
+            res += str(temp )
+            rem = rem % den
+     
+        if (repeating) :
+            res += ")"
+            x = res[:index]
+            x += "("
+            x += res[index:]
+            res = x
         return res
- 
-    res += "."
- 
-    # Initialize Remainder
-    rem = num % den
-    mp = {}
- 
-    # Position at which fraction starts
-    # repeating if it exists
-    index = 0
-    repeating = False
-    while (rem > 0 and not repeating) :
- 
-        # If this remainder is already seen,
-        # then there exists a repeating fraction.
-        if ( rem in mp):
- 
-            # Index to insert parentheses
-            index = mp[rem]
-            repeating = True
-            break
-         
-        else:
-            mp[rem] = len(res)
- 
-        rem = rem * 10
- 
-        # Calculate quotient, append it to result
-        # and calculate next remainder
-        temp = rem // den
-        res += str(temp )
-        rem = rem % den
-     
-    # If repeating fraction exists,
-    # insert parentheses.
-    if (repeating) :
-        res += ")"
-        x = res[:index]
-        x += "("
-        x += res[index:]
-        res = x
-     
-    # Return result.
-    return res
+		
+#{ 
+#  Driver Code Starts
+#Initial Template for Python 3
+
+if __name__ == '__main__':
+	T=int(input())
+	for i in range(T):
+		numerator, denominator = input().split()
+		numerator = int(numerator); denominator = int(denominator)
+		ob = Solution()
+		ans = ob.fractionToDecimal(numerator, denominator)
+		print(ans)
+# } Driver Code Ends
