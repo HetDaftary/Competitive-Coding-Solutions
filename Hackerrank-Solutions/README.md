@@ -1,2 +1,2 @@
-# Hackerrank-Solutions
-The solutions of Hackerrank are available in this repositry. 
+# Hackerrank-Solutions-Solutions
+The solutions of Hackerrank-Solutions are available in this repositry.
